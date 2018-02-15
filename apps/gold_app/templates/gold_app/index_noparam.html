@@ -30,24 +30,27 @@
                 <div class="places">
                     <h2>Cave</h2>
                     <p>(Earns 5-10 golds)</p>
-                    <form action='/process/cave' method='post'>
+                    <form action='/process' method='post'>
                         {% csrf_token %}
+                        <input type="hidden" name="building" value="cave" />
                         <input type="submit" value="Find Gold!"/>
                     </form>
                 </div>
                 <div class="places">
                     <h2>House</h2>
                     <p>(Earns 2-5 golds)</p>
-                    <form action='/process/house' method='post'>
+                    <form action='/process' method='post'>
                         {% csrf_token %}
+                        <input type="hidden" name="building" value="house" />
                         <input type="submit" value="Find Gold!"/>
                     </form>
                 </div>
                 <div class="places">
                     <h2>Casino</h2>
                     <p>(Earns/Takes 0-50 golds)</p>
-                    <form action='/process/casino' method='post'>
+                    <form action='/process' method='post'>
                         {% csrf_token %}
+                        <input type="hidden" name="building" value="casino" />
                         <input type="submit" value="Find Gold!"/>
                     </form>
                 </div>

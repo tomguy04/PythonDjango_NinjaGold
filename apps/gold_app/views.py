@@ -16,6 +16,41 @@ def index(request):
     else:
         return render(request,"gold_app/index.html")
 
+def process_param(request,place):
+    print "****************GOT PARAM" + place
+    houseDict = {}
+    request.session.modified = True
+    if place == 'farm':
+    #using the hidden input would be
+    #if request.POST['building'] == 'farm':
+      houseDict['currentPlace'] = 'farm'
+      houseDict['timeStamp'] = datetime.now().strftime("%Y/%m/%d %I:%m:%p")
+      houseDict['currentWin'] = int(random.randrange(9, 21))
+      request.session['yourGold'] += houseDict['currentWin']
+      request.session['history'].append(houseDict)
+      return redirect('/')
+    elif place == 'cave':
+      houseDict['currentPlace'] = 'cave'
+      houseDict['timeStamp'] = datetime.now().strftime("%Y/%m/%d %I:%m:%p")
+      houseDict['currentWin'] = int(random.randrange(4, 11))
+      request.session['yourGold'] += houseDict['currentWin']
+      request.session['history'].append(houseDict)
+      return redirect('/')
+    elif place == 'house':
+      houseDict['currentPlace'] = 'house'
+      houseDict['timeStamp'] = datetime.now().strftime("%Y/%m/%d %I:%m:%p")
+      houseDict['currentWin'] = int(random.randrange(1, 6))
+      request.session['yourGold'] += houseDict['currentWin']
+      request.session['history'].append(houseDict)
+      return redirect('/')
+    else:
+      houseDict['currentPlace'] = 'casino'
+      houseDict['timeStamp'] = datetime.now().strftime("%Y/%m/%d %I:%m:%p")
+      houseDict['currentWin'] = int(random.randrange(-51, 51))
+      request.session['yourGold'] += houseDict['currentWin']
+      request.session['history'].append(houseDict)
+      return redirect('/')  
+
 def process(request):
     houseDict = {}
     request.session.modified = True
